@@ -4,6 +4,7 @@
 import os
 from traceback import format_exc
 from shutil import copy2
+from clr import CompileModules
 
 # - - - - - - - - CLASS LIBRARY
 
@@ -57,7 +58,6 @@ class Compiler:
         program_files = Compiler.collect_files(source_folder)
 
         try:
-            from clr import CompileModules
             CompileModules(target_file, *program_files)
             print("\nBUILD SUCCESSFUL\nTarget: {}\n".format(target_file))
             
@@ -80,6 +80,7 @@ class Compiler:
 # - - - - - - - - RUN SCRIPT
 
 def Run():
+    print(os.path.abspath(__file__))
     Compiler.Build("my_module.dll")
 
 if __name__ == "__main__":

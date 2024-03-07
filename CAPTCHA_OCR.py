@@ -1,14 +1,16 @@
 from easyocr import Reader
 class Captcha:
-    
-    def __init__(self,Image):
-        self.Image = Image
-        
-    def captchaDetctor(self):
+     
+    @staticmethod
+    def captchaDetctor(Image):
         reader = Reader(['en'])
-        results = reader.readtext(self.Image,detail=0)
+        results = reader.readtext(Image, detail=0)
 
         print(results)
 
-x= Captcha("2_c.jpg")
-print(x.captchaDetctor())
+def Run():
+    Captcha.captchaDetctor("1_c.jpg")
+
+if __name__ == "__main__":
+    Run()
+    
